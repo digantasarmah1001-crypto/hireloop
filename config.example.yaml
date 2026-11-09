@@ -1,0 +1,65 @@
+# Copy to config.yaml and edit. config.yaml is git-ignored.
+
+profile:
+  first_name: Your
+  last_name: Name
+  email: you@example.com
+  phone: "+91 90000 00000"
+  location: Bengaluru, India
+  linkedin: https://www.linkedin.com/in/you
+  github: https://github.com/you
+  portfolio: ""
+  # Standard screening answers used to fill forms. Anything not here is
+  # drafted by the LLM from your resume and always flagged for your review.
+  answers:
+    work_authorization: "Authorized to work in India"
+    requires_sponsorship: "No"
+    notice_period: "30 days"
+    expected_salary: "Negotiable"
+    willing_to_relocate: "Yes"
+
+resume_path: resume.yaml        # structured master resume (see resume.example.yaml)
+
+search:
+  # One run per (term x location). Sites supported by JobSpy:
+  # linkedin, indeed, glassdoor, google, zip_recruiter, bayt, naukri
+  sites: [indeed, linkedin, google, naukri]
+  terms: ["software engineer", "backend developer"]
+  locations: ["Bengaluru, India", "Remote"]
+  country_indeed: india
+  hours_old: 72
+  results_per_search: 30
+  exclude_companies: []
+  exclude_title_words: ["senior staff", "principal", "intern"]
+
+matching:
+  min_fit_score: 60        # 0-100 AI fit score needed to shortlist
+  min_keyword_score: 40    # used instead when AI scoring is off/unavailable
+  use_llm_scoring: true    # false = keyword scoring only (free, offline)
+
+apply:
+  # review  = fill the form, then stop for you to check and click Submit (default)
+  # auto    = submit automatically on supported ATS forms (Greenhouse, Lever)
+  mode: review
+  daily_limit: 15          # quality over volume — mass-applying hurts response rates
+  headless: false
+
+email:
+  # IMAP works with Gmail (use an App Password), Outlook, Zoho, etc.
+  imap_host: imap.gmail.com
+  imap_user: you@example.com
+  password_env: HIRELOOP_IMAP_PASSWORD   # the password is read from this env var
+  folder: INBOX
+  lookback_days: 30
+
+followup:
+  ask_after_days_no_reply: 21     # ask if you've heard anything outside email
+  ask_after_interview_days: 7     # after an interview, ask how it went / did you get it
+
+llm:
+  model: claude-opus-5-5
+  effort: medium           # low|medium|high — tailoring quality vs cost
+  classify_effort: low     # email classification is simple; keep cheap
+
+db_path: data/hireloop.db
+output_dir: output

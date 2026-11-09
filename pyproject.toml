@@ -1,0 +1,36 @@
+[project]
+name = "hireloop"
+version = "0.1.0"
+description = "Find jobs, tailor an ATS-friendly resume per job without fabricating, apply, and track replies and outcomes from your inbox."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "anthropic>=2.7",
+    "pydantic>=2",
+    "pyyaml>=6",
+    "python-docx>=1.1",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+# python-jobspy pins an old numpy; install it with:  pip install --no-deps python-jobspy
+# then its runtime deps listed here.
+discover = ["pandas", "tls-client", "requests", "markdownify", "regex", "beautifulsoup4"]
+apply = ["playwright>=1.40"]
+dev = ["pytest"]
+
+[project.scripts]
+hireloop = "hireloop.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["hireloop*"]
+
+[tool.setuptools.package-data]
+hireloop = ["templates/*.html"]

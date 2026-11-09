@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="stats">
+  <div class="stat"><b>{{ applied }}</b><span class="muted">applied</span></div>
+  <div class="stat"><b>{{ interviews }}</b><span class="muted">reached interview</span></div>
+  <div class="stat"><b>{{ (100 * interviews / applied) | round | int if applied else 0 }}%</b><span class="muted">interview rate</span></div>
+  <div class="stat"><b>{{ funnel['shortlisted'] + funnel['tailored'] }}</b><span class="muted">in queue</span></div>
+</div>
+
+{% for c in checkins %}
+<div class="card ask">
+  <div><b>{{ c.question }}</b></div>
+  <div style="margin-top:6px; display:flex; gap:6px; flex-wrap:wrap;">
+  {% for a in answers[c.reason] %}
+    <form method="post" action="/checkin/{{ c.id }}"><input type="hidden" name="answer" value="{{ a }}"><button>{{ a }}</button></form>
+  {% endfor %}
+  </div>
+</div>
+{% endfor %}
+
+<div class="board">
+{% for name, jobs in columns %}
+  <section class="col">
+    <h3>{{ name }} · {{ jobs|length }}</h3>
+    {% for j in jobs[:40] %}
+    <div class="card">
+      <a href="/job/{{ j.id }}">{{ j.title }}</a>
+      <div class="muted">{{ j.company }}{% if j.fit_score is not none %} · fit {{ j.fit_score|int }}{% endif %}</div>
+      <span class="pill">{{ j.status }}</span>
+    </div>
+    {% endfor %}
+  </section>
+{% endfor %}
+</div>
+
+{% if events %}
+<h3 class="muted" style="margin-top:24px">Recent activity</h3>
+<table>
+{% for e in events %}
+<tr><td class="muted">{{ e.occurred_at[:16].replace('T',' ') }}</td><td>{{ e.kind }}</td>
+<td>{% if e.job_id %}<a href="/job/{{ e.job_id }}">#{{ e.job_id }}</a>{% endif %}</td><td>{{ e.summary or e.subject }}</td></tr>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

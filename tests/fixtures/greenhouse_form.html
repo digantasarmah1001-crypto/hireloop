@@ -1,0 +1,21 @@
+<!doctype html>
+<html><body>
+<h1>Software Engineer — Example Co</h1>
+<form id="application_form" onsubmit="event.preventDefault(); document.body.innerHTML='<h2>Thank you for applying!</h2>';">
+  <div class="field"><label for="first_name">First Name *</label><input id="first_name" name="job_application[first_name]" required></div>
+  <div class="field"><label for="last_name">Last Name *</label><input id="last_name" name="job_application[last_name]" required></div>
+  <div class="field"><label for="email">Email *</label><input id="email" type="email" required></div>
+  <div class="field"><label for="phone">Phone</label><input id="phone" type="tel"></div>
+  <div class="field"><label for="resume">Resume/CV *</label><input id="resume" type="file" required></div>
+  <div class="field"><label for="cover">Cover Letter</label><input id="cover" type="file"></div>
+  <div class="field"><label for="li">LinkedIn Profile</label><input id="li"></div>
+  <div class="field"><label for="auth">Are you legally authorized to work in India? *</label>
+    <select id="auth" required><option></option><option>Yes</option><option>No</option></select></div>
+  <div class="field"><label for="sp">Will you now or in the future require sponsorship? *</label>
+    <select id="sp" required><option></option><option>Yes</option><option>No</option></select></div>
+  <div class="field"><label for="why">Why do you want to work at Example Co? *</label><textarea id="why" required></textarea></div>
+  <div class="field"><label for="gender">Gender</label><select id="gender"><option></option><option>Male</option><option>Female</option><option>Decline</option></select></div>
+  <div class="field"><label><input type="checkbox" id="consent" required> I agree to the privacy policy *</label></div>
+  <button type="submit">Submit Application</button>
+</form>
+</body></html>

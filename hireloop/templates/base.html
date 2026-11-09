@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hireloop</title>
+<style>
+:root { --bg:#f7f7f5; --card:#fff; --ink:#1d1d1b; --muted:#6b6b66; --line:#e4e4df; --accent:#2f6f4f; --warn:#a3561a; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161615; --card:#21211f; --ink:#ececea; --muted:#9a9a94; --line:#33332f; --accent:#6fbf93; --warn:#e3a067; } }
+* { box-sizing:border-box; }
+body { margin:0; font:15px/1.45 system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+header { padding:14px 20px; border-bottom:1px solid var(--line); display:flex; gap:18px; align-items:baseline; flex-wrap:wrap; }
+header a { color:var(--ink); text-decoration:none; font-weight:700; font-size:18px; }
+main { padding:16px 20px; max-width:1400px; margin:0 auto; }
+a { color:var(--accent); }
+.muted { color:var(--muted); font-size:13px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:8px; }
+.board { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; }
+.col h3 { font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:0 0 8px; }
+.ask { border-left:4px solid var(--warn); }
+.ask form { display:inline; }
+button, select, input { font:inherit; padding:5px 10px; border-radius:6px; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; }
+button:hover { border-color:var(--accent); }
+.stats { display:flex; gap:22px; flex-wrap:wrap; margin-bottom:14px; }
+.stat b { font-size:22px; display:block; }
+.pill { font-size:12px; padding:1px 7px; border-radius:10px; border:1px solid var(--line); color:var(--muted); }
+table { border-collapse:collapse; width:100%; } td { padding:5px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+pre { white-space:pre-wrap; font:13px/1.5 system-ui, sans-serif; max-height:420px; overflow:auto; }
+</style>
+</head>
+<body>
+<header><a href="/">hireloop</a><span class="muted">find → tailor → apply → track → outcome</span></header>
+<main>{% block body %}{% endblock %}</main>
+</body>
+</html>

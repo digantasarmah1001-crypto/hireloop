@@ -1,0 +1,17 @@
+Backend Engineer (Python) — Example Co, Bengaluru
+
+We're looking for a backend engineer to build and scale our payments platform.
+
+What you'll do
+- Design REST APIs and microservices in Python (FastAPI) and Go
+- Own PostgreSQL schemas and Redis caching
+- Build event-driven pipelines on Kafka
+- Deploy on AWS with Docker, Kubernetes and Terraform; CI/CD with GitHub Actions
+- Improve observability with Prometheus and Grafana
+
+Requirements
+- 2+ years building backend services in Python
+- Strong SQL and PostgreSQL experience
+- Experience with Kafka or similar streaming systems
+- Familiarity with Kubernetes and AWS
+- Nice to have: GraphQL, Elasticsearch

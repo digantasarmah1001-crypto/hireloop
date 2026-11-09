@@ -1,0 +1,62 @@
+# Master resume. Every bullet has an id. The tailoring step can only pick,
+# reorder and reword bullets that exist here; it cannot add employers,
+# titles, dates, degrees or skills you don't list. This is enforced in code.
+name: Your Name
+headline: Backend Software Engineer
+contact:
+  email: you@example.com
+  phone: "+91 90000 00000"
+  location: Bengaluru, India
+  linkedin: https://www.linkedin.com/in/you
+  github: https://github.com/you
+
+summary: >
+  Backend engineer with 3 years building Python and Go services, REST APIs
+  and data pipelines on AWS.
+
+skills:
+  languages: [Python, Go, SQL, JavaScript]
+  frameworks: [FastAPI, Django, React]
+  cloud_devops: [AWS, Docker, Kubernetes, GitHub Actions, Terraform]
+  data: [PostgreSQL, Redis, Kafka]
+
+experience:
+  - id: acme
+    company: Acme Corp
+    title: Software Engineer
+    location: Bengaluru
+    start: 2023-01
+    end: present
+    bullets:
+      - id: acme-1
+        text: Built FastAPI order service handling 2M requests/day with p99 latency under 120 ms.
+      - id: acme-2
+        text: Cut AWS costs 30% by moving batch jobs from EC2 to spot-based Kubernetes CronJobs.
+      - id: acme-3
+        text: Designed Kafka-based event pipeline feeding PostgreSQL analytics tables.
+  - id: startup
+    company: Tiny Startup
+    title: Junior Developer
+    location: Remote
+    start: 2021-06
+    end: 2022-12
+    bullets:
+      - id: startup-1
+        text: Shipped Django admin tooling used by 40 support staff.
+      - id: startup-2
+        text: Added GitHub Actions CI with unit tests, reducing production bugs by 25%.
+
+projects:
+  - id: proj-scraper
+    name: Price Tracker
+    bullets:
+      - id: proj-scraper-1
+        text: Python scraper + Redis queue tracking 10k product prices daily.
+
+education:
+  - school: Your University
+    degree: B.Tech, Computer Science
+    start: 2017
+    end: 2021
+
+certifications: []

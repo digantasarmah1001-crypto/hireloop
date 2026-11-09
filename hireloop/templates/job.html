@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+<h2 style="margin:0">{{ j.title }}</h2>
+<div class="muted">{{ j.company }} · {{ j.location }} · via {{ j.site }} · ATS: {{ j.ats }}</div>
+<p><a href="{{ j.apply_url or j.job_url }}" target="_blank" rel="noopener">Open posting ↗</a>
+{% if j.resume_path %} · <a href="/job/{{ j.id }}/resume">Tailored resume (.docx)</a>{% endif %}</p>
+
+<form method="post" action="/job/{{ j.id }}/status" class="card">
+  Status
+  <select name="status">{% for s in statuses %}<option {% if s == j.status %}selected{% endif %}>{{ s }}</option>{% endfor %}</select>
+  <input name="note" placeholder="note (optional)" style="min-width:200px">
+  <button>Save</button>
+</form>
+
+{% if j.fit_score is not none %}
+<div class="card"><b>Fit {{ j.fit_score|int }}</b>
+  <ul>{% for r in j.fit_reasons|fromjson %}<li>{{ r }}</li>{% endfor %}</ul>
+  {% set miss = j.missing_keywords|fromjson %}
+  {% if miss %}<div class="muted">Missing keywords: {{ miss|join(', ') }}</div>{% endif %}
+</div>
+{% endif %}
+
+<h3>Timeline</h3>
+<table>
+{% for e in events %}
+<tr><td class="muted">{{ e.occurred_at[:16].replace('T',' ') }}</td><td>{{ e.kind }}</td><td>{{ e.summary or e.subject }}{% if e.sender %}<div class="muted">{{ e.sender }}</div>{% endif %}</td></tr>
+{% else %}<tr><td class="muted">Nothing yet.</td></tr>{% endfor %}
+</table>
+
+<h3>Description</h3>
+<div class="card"><pre>{{ j.description or 'No description captured.' }}</pre></div>
+{% endblock %}
